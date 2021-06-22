@@ -19,7 +19,7 @@ export function NewRoom() {
       <main>
         <div className="main-content">
           <img src={logoImg} alt="Letmeask" />
-          <h2>Crie uma nova sala</h2>
+          <h2>{user?.name} Crie uma nova sala</h2>
           <form>
             <input type="text" placeholder="Nome da sala" />
             <Button type="submit">Criar sala</Button>

@@ -7,7 +7,7 @@ import { Button } from "../components/Button";
 import "../styles/auth.scss";
 
 export function NewRoom() {
-  const { user, signInWithGoogle } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <div id="page-auth">

@@ -1,6 +1,7 @@
 import LogoImg from "../assets/images/logo.svg";
 import { Button } from "../components/Button";
 import "../styles/room.scss";
+import { RoomCode } from "../components/RoomCode";
 
 export function Room() {
   return (
@@ -8,7 +9,7 @@ export function Room() {
       <header>
         <div className="content">
           <img src={LogoImg} alt="Letmeask" />
-          <div>codigo</div>
+          <RoomCode />
         </div>
       </header>
 
@@ -23,8 +24,8 @@ export function Room() {
           <div className="form-footer">
             <span>
               Parta enviar sua pergunta, <button>faça seu login.</button>
-              <Button type="submit">Enviar pergunta</Button>
             </span>
+            <Button type="submit">Enviar pergunta</Button>
           </div>
         </form>
       </main>

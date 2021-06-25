@@ -9,14 +9,14 @@ export function Room() {
       <header>
         <div className="content">
           <img src={LogoImg} alt="Letmeask" />
-          <RoomCode />
+          <RoomCode code="123321123312123312" />
         </div>
       </header>
 
       <main className="content">
         <div className="room-title">
           <h1>SalaReact</h1>
-          <span>4 asks</span>
+          <span>4 Perguntas</span>
         </div>
 
         <form>

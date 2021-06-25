@@ -7,6 +7,7 @@ import { FormEvent, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { database } from "../services/firebase";
 import { useEffect } from "react";
+import { Question } from "../components/Question";
 
 type FirebaseQuestions = Record<
   string,
@@ -21,7 +22,7 @@ type FirebaseQuestions = Record<
   }
 >;
 
-type Questions = {
+type QuestionType = {
   id: string;
   author: {
     name: string;
@@ -41,7 +42,7 @@ export function Room() {
   const params = useParams<RoomParams>();
   const roomId = params.id;
   const [newQuestion, setNewQuestion] = useState("");
-  const [questions, setQuestions] = useState<Questions[]>([]);
+  const [questions, setQuestions] = useState<QuestionType[]>([]);
   const [title, setTitle] = useState("");
 
   async function handleSendQuestion(event: FormEvent) {
@@ -112,7 +113,6 @@ export function Room() {
             </span>
           )}
         </div>
-
         <form onSubmit={handleSendQuestion}>
           <textarea
             placeholder="Diga oque que gostaria de perguntar:"
@@ -135,8 +135,17 @@ export function Room() {
             </Button>
           </div>
         </form>
-
-        {JSON.stringify(questions)}
+        <div className="question-list">
+          {questions.map((question) => {
+            return (
+              <Question
+                key={question.id}
+                content={question.content}
+                author={question.author}
+              />
+            );
+          })}
+        </div>
       </main>
     </div>
   );

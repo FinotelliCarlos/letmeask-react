@@ -51,7 +51,10 @@ export function AdminRoom() {
       <header>
         <div className="content">
           <img src={LogoImg} alt="Letmeask" />
-          <RoomCode code={roomId} />
+          <div>
+            <RoomCode code={roomId} />
+            <Button isOutlined>Encerrar Sala</Button>
+          </div>
         </div>
       </header>
 

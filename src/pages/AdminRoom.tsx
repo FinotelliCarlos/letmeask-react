@@ -2,7 +2,7 @@ import LogoImg from "../assets/images/logo.svg";
 import { Button } from "../components/Button";
 import "../styles/room.scss";
 import { RoomCode } from "../components/RoomCode";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 // import { FormEvent, useState } from "react";
 // import { useAuth } from "../hooks/useAuth";
 import { database } from "../services/firebase";
@@ -20,6 +20,14 @@ export function AdminRoom() {
   const params = useParams<RoomParams>();
   const roomId = params.id;
   const { questions, title } = useRoom(roomId);
+  const history = useHistory();
+
+  async function handleEndRoom() {
+    await database.ref(`rooms/${roomId}`).update({
+      endedAt: new Date(),
+    });
+    history.push("/");
+  }
 
   async function handleDeleteQuestion(questionId: string) {
     if (window.confirm("Tem certeza que você deseja excluir está pergunta?")) {
@@ -34,7 +42,9 @@ export function AdminRoom() {
           <img src={LogoImg} alt="Letmeask" />
           <div>
             <RoomCode code={roomId} />
-            <Button isOutlined>Encerrar Sala</Button>
+            <Button isOutlined onClick={handleEndRoom}>
+              Encerrar Sala
+            </Button>
           </div>
         </div>
       </header>

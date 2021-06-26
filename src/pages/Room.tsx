@@ -45,6 +45,16 @@ export function Room() {
     setNewQuestion("");
   }
 
+  async function handleLikeQuestion(questionId: string) {
+    const newLike = await database
+      .ref(`rooms/${roomId}/questions/${questionId}/likes`)
+      .push({
+        authorId: user?.id,
+      });
+
+      
+  }
+
   return (
     <div id="page-room">
       <header>
